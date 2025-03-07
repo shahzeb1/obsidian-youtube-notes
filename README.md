@@ -11,6 +11,7 @@ Take notes for YouTube videos
 1. Get a YouTube API key via Google Cloud [tut](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/)
 2. Add the key to the macro via the settings gear icon
 3. Invoke the macro and then use the following values in your template:
+- `{{value:folder}}` - Root level folder of all the video notes (access via macro settings gear)
 - `{{value:url}}` - Video URL
 - `{{value:title}}` - Video title
 - `{{value:channel}}` - Video creator
