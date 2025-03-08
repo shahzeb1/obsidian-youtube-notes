@@ -1,4 +1,4 @@
-# o Obsidian scripts for QuickAdd
+# Obsidian scripts for QuickAdd
 
 1. A YouTube notes script
 2. A general web article wcript
