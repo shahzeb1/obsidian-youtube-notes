@@ -1,12 +1,14 @@
-# obsidian-youtube-notes
-Take notes for YouTube videos
+# o Obsidian scripts for QuickAdd
+
+1. A YouTube notes script
+2. A general web article wcript
 
 ## Requires Obsidian Extensions:
 
 1. Dataview
 2. QuickAdd
 
-## Set up:
+## Set up YouTube Script:
 
 1. Get a YouTube API key via Google Cloud [tut](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/)
 2. Add the key to the macro via the settings gear icon
