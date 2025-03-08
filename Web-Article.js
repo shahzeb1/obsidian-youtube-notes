@@ -29,6 +29,15 @@ module.exports = {
     if (!url) return null;
   
     try {
+      // Extract domain from URL
+      let domain;
+      try {
+        const urlObj = new URL(url);
+        domain = urlObj.hostname;
+      } catch (e) {
+        domain = "unknown-domain";
+      }
+      
       // Fetch the article page to get the title
       const response = await fetch(url);
       const html = await response.text();
@@ -40,6 +49,7 @@ module.exports = {
       // Set the variables other macros or templates can use
       ctx.variables.link = url;
       ctx.variables.title = title;
+      ctx.variables.domain = domain;
       ctx.variables.folder = settings.folder;
   
       // Desired folder where notes will be created
@@ -79,4 +89,3 @@ module.exports = {
       throw new Error(`Failed to fetch article: ${error.message}`);
     }
   }
-  
