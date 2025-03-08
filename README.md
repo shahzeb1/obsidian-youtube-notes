@@ -1,7 +1,7 @@
 # Obsidian scripts for QuickAdd
 
 1. A YouTube notes script
-2. A general web article wcript
+2. A general web article script
 
 ## Requires Obsidian Extensions:
 
