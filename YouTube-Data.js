@@ -51,10 +51,13 @@ async function YoutubeLearning(ctx, settings) {
     );
   }
 
+   // Clean the title to remove invalid characters
+    const cleanTitle = cleanFileName(data.items[0].snippet.title);
+
   // Set the variables other macros or templates can use
   // by doing {{value:url}} or {{value:title}} etc.
   ctx.variables.url = url;
-  ctx.variables.title = data.items[0].snippet.title;
+  ctx.variables.title = cleanTitle;
   ctx.variables.channel = data.items[0].snippet.channelTitle;
   ctx.variables.folder = settings.folder;
 
@@ -97,4 +100,13 @@ async function YoutubeLearning(ctx, settings) {
   ctx.variables.fileNumber = fileNumber;
 
   return null;
+}
+
+// Function to clean the file name by replacing invalid characters
+function cleanFileName(title) {
+  // Define a regex to match invalid characters
+  const invalidChars = /[\\/:*?"<>|]/g;
+
+  // Replace invalid characters with a hyphen
+  return title.replace(invalidChars, "-");
 }
