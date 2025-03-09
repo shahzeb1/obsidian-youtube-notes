@@ -1,6 +1,6 @@
 module.exports = {
     settings: {
-      name: "Article Link",
+      name: "Article Learning",
       author: "shahzeb <github.com/shahzeb1>",
       options: {
         folder: {
@@ -39,16 +39,16 @@ module.exports = {
       }
       
       // Fetch the article page to get the title
-      const response = await fetch(url);
-      const html = await response.text();
+      const response = await requestUrl(url);
+      const html = response.text;
       
       // Extract title from HTML using regex
-      const titleMatch = html.match(/<title>(.*?)<\/title>/i);
+      const titleMatch = html.match(/<title(?:\s+[^>]*)?>([^<]*)<\/title>/i);
       const title = titleMatch ? titleMatch[1] : "Untitled Article";
   
       // Set the variables other macros or templates can use
-      ctx.variables.link = url;
-      ctx.variables.title = title;
+      ctx.variables.url = url;
+      ctx.variables.title = cleanFileName(title);
       ctx.variables.domain = domain;
       ctx.variables.folder = settings.folder;
   
@@ -89,3 +89,12 @@ module.exports = {
       throw new Error(`Failed to fetch article: ${error.message}`);
     }
   }
+  
+  // Function to clean the file name by replacing invalid characters
+function cleanFileName(title) {
+  // Define a regex to match invalid characters
+  const invalidChars = /[\\/:*?"<>|]/g;
+
+  // Replace invalid characters with a hyphen
+  return title.replace(invalidChars, "-");
+}
